@@ -20,8 +20,8 @@ public class TestInvoiceGenerator {
 	public void givenMultipleRides_ShouldReturnTotalFare() {
 		InvoiceGenerator invoice = new InvoiceGenerator();
 		List<Rides> ride = new ArrayList<>();
-		ride.add(new Rides(1,2.0, 5.0));
-		ride.add(new Rides(2,0.1, 1.0));
+		ride.add(new Rides(1, 2.0, 5.0));
+		ride.add(new Rides(2, 0.1, 1.0));
 		List<Object> fare = (List<Object>) invoice.calculateforRides(ride);
 		List<Object> result = new ArrayList<>();
 		result.add(30.0);
@@ -29,13 +29,29 @@ public class TestInvoiceGenerator {
 		result.add(15.0);
 		assertEquals(result, fare);
 	}
+
 	@Test
 	public void givenid_returnInvioce() {
 		InvoiceGenerator invoice = new InvoiceGenerator();
 		List<Rides> ride = new ArrayList<>();
-		ride.add(new Rides(1,2.0, 5.0));
-		ride.add(new Rides(2,0.1, 1.0));
-		double fare=invoice.search(1);
-		assertEquals(25, fare,0.0);
+		ride.add(new Rides(1, 2.0, 5.0));
+		ride.add(new Rides(2, 0.1, 1.0));
+		double fare = invoice.search(1);
+		assertEquals(25, fare, 0.0);
 	}
+
+	@Test
+	public void givenRideType_returnvalue() {
+		InvoiceGenerator invoice = new InvoiceGenerator();
+		List<Rides> ride = new ArrayList<>();
+		ride.add(new Rides(1, 2.0, 5.0, 0));
+		ride.add(new Rides(2, 0.1, 1.0, 1));
+		List<Object> fare = (List<Object>) invoice.calculateforRides(ride);
+		List<Object> result = new ArrayList<>();
+		result.add(30.0);
+		result.add(2);
+		result.add(15.0);
+		assertEquals(result, fare);
+	}
+
 }

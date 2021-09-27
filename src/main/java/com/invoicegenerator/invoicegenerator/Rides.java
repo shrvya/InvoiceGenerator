@@ -6,9 +6,11 @@ public class Rides {
 	double distance;
 	double time;
 	int id;
-	public Rides(int id,double distance, double time) {
+	int rideType;
+	public Rides(int id,double distance, double time,int rideType) {
 		this.id=id;
 		this.distance = distance;
 		this.time = time;
+		this.rideType=rideType;
 	}
 }

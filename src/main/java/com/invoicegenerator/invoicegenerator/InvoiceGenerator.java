@@ -15,10 +15,29 @@ public class InvoiceGenerator {
 
 	/*
 	 * method price calculates the fare price distance is the distance traveled time
-	 * is the time taken to travel returns cost
+	 * is the time taken to travel returns cost this method calculate fare price for
+	 * normal and reward customers
 	 */
-	public static double price(double distance, double time) {
+	public static double price(double distance, double time, int rideType) {
 
+		double cost;
+
+		if (rideType == 0) {
+			cost = distance * 10 + time * 1;
+			if (cost < 5) {
+				cost = 5;
+			}
+		} else {
+			cost = distance * 15 + time * 2;
+			if (cost < 20) {
+				cost = 20;
+			}
+		}
+
+		return cost;
+	}
+
+	public static double price(double distance, double time) {
 		double cost;
 		cost = distance * 10 + time * 1;
 		if (cost < 5) {
@@ -38,17 +57,15 @@ public class InvoiceGenerator {
 		int noofRides = ride.size();
 		double avgFare;
 		for (Rides rode : ride) {
-			totalFare = totalFare + price(rode.distance, rode.time);
+			totalFare = totalFare + price(rode.distance, rode.time, rode.rideType);
 		}
 		avgFare = totalFare / noofRides;
-		System.out.println(Arrays.asList(totalFare, noofRides, avgFare));
 		return Arrays.asList(totalFare, noofRides, avgFare);
 	}
 
 	public double search(int id) {
 		double searchinvoice = 0;
 		Rides index = ride.get(id);
-		System.out.println(index);
 		if (index.id != 0) {
 			searchinvoice = price(index.distance, index.time);
 		}
