@@ -24,4 +24,18 @@ public class InvoiceGenerator {
 		}
 		return cost;
 	}
+
+	List<Rides> ride = new ArrayList<>();
+
+	/*
+	 * method to calculate total fare for all rides takes List rides as parameter
+	 * returns total fare
+	 */
+	public double calculateforRides(List<Rides> ride) {
+		double totalFare = 0;
+		for (Rides rode : ride) {
+			totalFare = totalFare + price(rode.distance, rode.time);
+		}
+		return totalFare;
+	}
 }
