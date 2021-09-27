@@ -45,6 +45,16 @@ public class InvoiceGenerator {
 		return Arrays.asList(totalFare, noofRides, avgFare);
 	}
 
+	public double search(int id) {
+		double searchinvoice = 0;
+		Rides index = ride.get(id);
+		System.out.println(index);
+		if (index.id != 0) {
+			searchinvoice = price(index.distance, index.time);
+		}
+		return searchinvoice;
+	}
+
 	public static void main(String[] args) {
 		List<Rides> ride = new ArrayList<>();
 		List<Object> person = (List<Object>) calculateforRides(ride);

@@ -5,8 +5,9 @@ package com.invoicegenerator.invoicegenerator;
 public class Rides {
 	double distance;
 	double time;
-	
-	public Rides(double distance, double time) {
+	int id;
+	public Rides(int id,double distance, double time) {
+		this.id=id;
 		this.distance = distance;
 		this.time = time;
 	}
